@@ -1,0 +1,22 @@
+meta {
+  name: publishEvent
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:9191/producer-app/publishNew
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "id": "2",
+    "firstName": "Sibylla-2",
+    "lastName": "Fawloe-2",
+    "email": "s_f_2@email.com",
+    "gender": "Binary",
+    "ipAddress": "32.241.244.23"
+  }
+}

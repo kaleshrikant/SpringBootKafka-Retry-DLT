@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "SpringBootKafka_Retry_DLT",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
