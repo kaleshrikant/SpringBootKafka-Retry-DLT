@@ -23,7 +23,7 @@ public class KafkaMessageConsumer {
     @KafkaListener(topics = "${app.topic.name}", groupId = "javatechie-group")
     public void consumeEvents(User user, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic, @Header(KafkaHeaders.OFFSET) long offset) {
         try {
-            log.info("Received: {} from {} offset {}", new ObjectMapper().writeValueAsString(user), topic, offset);
+            log.info("Received: {} from topic: {} with offset:  {}", new ObjectMapper().writeValueAsString(user), topic, offset);
             //validate restricted IP before process the records
             List<String> restrictedIpList = Stream.of("32.241.244.236", "15.55.49.164", "81.1.95.253", "126.130.43.183").collect(Collectors.toList());
             if (restrictedIpList.contains(user.getIpAddress())) {
@@ -37,6 +37,6 @@ public class KafkaMessageConsumer {
 
     @DltHandler
     public void listenDLT(User user, @Header(KafkaHeaders.RECEIVED_TOPIC) String topic, @Header(KafkaHeaders.OFFSET) long offset) {
-        log.info("DLT Received : {} , from {} , offset {}",user.getFirstName(),topic,offset);
+        log.info("DLT Received : {} , from topic : {} , with offset : {}",user.getFirstName(),topic,offset);
     }
 }
